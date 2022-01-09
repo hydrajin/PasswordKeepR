@@ -1,15 +1,18 @@
-LHL Node Skeleton
-=========
+            PasswordKeepR  
+================================================================
+Lighthouse Labs Midterm Project by : ` Zakiya Alfughi`, `Suliman Fayyaz ` & ` Mohamed Bashir ` 
+## Introduction to PasswordKeepR
+ PasswordKeepR is a Multi-Level web application designed for users to share login credentials of applications such as Twitter and Gmail etc between members.
 
-## Project Setup
+## User Stories 
 
-The following steps are only for _one_ of the group members to perform.
-
-1. Create your own copy of this repo using the `Use This Template` button, ideally using the name of your project. The repo should be marked Public
-2. Verify that the skeleton code now shows up in your repo on GitHub, you should be automatically redirected
-3. Clone your copy of the repo to your dev machine
-4. Add your team members as collaborators to the project so that they can push to this repo
-5. Let your team members know the repo URL so that they use the same repo (they should _not_ create a copy/fork of this repo since that will add additional workflow complexity to the project)
+   * a new user can register for an account
+   * a registered user can login into their account
+   * user can add a new username and password for a specific website
+   *  app can generate passwords based on the criteria specified (password length, contains lowercase, contains uppercase, contains numbers, etc)
+   * user can edit and change their password any time
+   * user has a convenient copy to clipboard button so they don't have to select the password
+   * sites can be categorized, to, social (instagram, youtube)), work related (bamboo, harvest), entertainment (snapchat, reddit), etc
 
 
 ## Getting Started
