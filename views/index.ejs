@@ -26,7 +26,7 @@
   </head>
   <body>
     <i class="fas fa-lock"></i>
-    <h2>TEST123</h2>
+    <h2>`</h2>
     <table class="table">
       <thead>
         <tr>
@@ -38,5 +38,26 @@
           <th scope="col" style="padding-left: 20px">Delete</th>
         </tr>
       </thead>
+      <tbody>
+        <% for(let account of accounts) { %>
+        <tr>
+          <td><%= account.category %></td>
+          <td><%= account.url %></td>
+          <td><%= account.username %></td>
+          <td><%= account.password %></td>
+          <td>
+            <form method="GET" action="">
+              <button class="btn btn-outline-primary">Edit</button>
+            </form>
+          </td>
+          <td>
+            <form method="POST" action="">
+              <button class="btn btn-outline-danger">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
   </body>
 </html>
