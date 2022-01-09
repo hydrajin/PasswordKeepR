@@ -1,5 +1,5 @@
-            PasswordKeepR  
-================================================================
+## PasswordKeepR  
+===========
 Lighthouse Labs Midterm Project by : ` Zakiya Alfughi`, `Suliman Fayyaz ` & ` Mohamed Bashir ` 
 ## Introduction to PasswordKeepR
  PasswordKeepR is a Multi-Level web application designed for users to share login credentials of applications such as Twitter and Gmail etc between members.
