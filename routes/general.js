@@ -22,6 +22,7 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
   router.get("/accounts", (req, res) => { // /api/users/accounts
     db.query(`SELECT * FROM accounts;`)
       .then(data => {
