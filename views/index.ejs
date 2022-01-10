@@ -48,12 +48,13 @@
           <!-- We need to select this value -->
           <td><input type="text" id="myInput"value=<%= account.password %></td>
           <td>
+            USE jQuery to select a specific value
             <!-- <form method="GET" action=""> -->
               <button onclick="copyPassword()" class="btn btn-outline-primary">Copy</button>
               <script>
                 function copyPassword() {
                   /* Get the text field */
-                  var copyText = document.getElementById("myInput");
+                  let copyText = document.getElementById("myInput");
 
                   /* Select the text field */
                   copyText.select();

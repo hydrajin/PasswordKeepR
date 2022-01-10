@@ -34,6 +34,7 @@ module.exports = (db) => {
       });
   });
   // Routes to the "Generate Password" page
+  //! http://localhost:8080/new/3 (Directs the organization_id = 3 to the generatePasswordPage)
   router.get("/new/:organization_id", (req, res) => { // for distinct organization
     const organizationId = req.params.organization_id;
     db.query(`SELECT * FROM accounts WHERE organization_id = $1;`,[organizationId])
@@ -60,6 +61,7 @@ module.exports = (db) => {
         const password = generateRandomString();
         const templateVars = { accounts: data.rows, password, organizationId, username, url, category };
         res.render("createAccount", templateVars);
+        // if we wanted account we do templateVars.password
       })
       .catch(err => {
         res
@@ -67,8 +69,8 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  // Shows the .JSON of the accounts db files
-  router.get("/accounts", (req, res) => { // /api/users/accounts
+  // Shows the .JSON of ALL accounts db files
+  router.get("/accounts", (req, res) => {
     db.query(`SELECT * FROM accounts;`)
       .then(data => {
         const accounts = data.rows;
@@ -80,7 +82,9 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  // shows the .JSON of the users db files
+  //TODO GET/POST? ONE account for ONE organization_id?
+
+  // shows the .JSON of ALL users db files
   router.get("/users", (req, res) => { // /api/users/accounts
     db.query(`SELECT * FROM users;`)
       .then(data => {
@@ -93,6 +97,44 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+  // TODO Login GET/POST set a cookie with cookie parser
+  // Routes to login 1 user
+  router.get("/users/:id", (req, res) => { // for distinct user
+    const userId = req.params.id;
+    db.query(`SELECT * FROM users WHERE id = $1;`,[userId])
+      .then(data => {
+        console.log("user!!", data.rows);
+        const templateVars = { users: data.rows };
+        // res.render(templateVars);
+        res.json({ templateVars });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.post("/users/:id", (req, res) => { // for distinct user
+    const userId = req.params.id;
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+    db.query(`SELECT * FROM users WHERE id = $1;`,[userId])
+      .then(data => {
+        console.log("==========xx", data.rows);
+        const templateVars = { users: data.rows, password, userId, name, email };
+        // res.render(templateVars);
+        res.json({ templateVars });
+        // if we wanted account we do templateVars.password
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   return router;
 };
 
