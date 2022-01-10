@@ -45,7 +45,8 @@
           <td><%= account.category %></td>
           <td><%= account.url %></td>
           <td><%= account.username %></td>
-          <td><%= account.password %></td>
+          <!-- We need to select this value -->
+          <td><input type="text"value=<%= account.password %></td>
           <td>
             <form method="GET" action="">
               <button class="btn btn-outline-primary">Copy</button>
