@@ -1,5 +1,8 @@
 // load .env data into process.env
 require("dotenv").config();
+// Add cookie-parser/cookie-session
+const cookieParser = require("cookie-parser");
+const cookieSession = require("cookie-session");
 
 // Web server config
 const PORT = process.env.PORT || 8080;
@@ -7,6 +10,13 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+// use ONE cookie-parser OR cookie-session
+app.use(cookieParser());
+app.use(cookieSession({
+  name: "session",
+  keys: ["pizza", "doot"],
+  userID: null,
+}));
 
 // PG database client/connection setup
 const { Pool } = require("pg");
