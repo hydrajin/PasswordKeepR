@@ -8,6 +8,16 @@
 const express = require('express');
 const router  = express.Router();
 
+const generateRandomString = function() {
+  let randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  for (let i = 0; i < 6; i++) {
+    result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+  }
+  return result;
+};
+
+
 module.exports = (db) => {
   // Routes to the "Main" page
   router.get("/", (req, res) => {
@@ -24,12 +34,32 @@ module.exports = (db) => {
       });
   });
   // Routes to the "Generate Password" page
-  router.get("/new", (req, res) => {
-    db.query(`SELECT * FROM accounts;`)
+  router.get("/new/:organization_id", (req, res) => { // for distinct organization
+    const organizationId = req.params.organization_id;
+    db.query(`SELECT * FROM accounts WHERE organization_id = $1;`,[organizationId])
       .then(data => {
-        console.log(data.rows);
-        // const templateVars = {accounts:data.rows};
-        res.render("generatePassword");
+        console.log("==========xx", data.rows);
+        const templateVars = { accounts: data.rows, password: null, organizationId };
+        res.render("generatePassword", templateVars);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.post("/generate/:organization_id", (req, res) => { // for distinct organization
+    const organizationId = req.params.organization_id;
+    const username = req.body.username;
+    const url = req.body.url;
+    const category = req.body.category;
+    db.query(`SELECT * FROM accounts WHERE organization_id = $1;`,[organizationId])
+      .then(data => {
+        console.log("==========xx", data.rows);
+        const password = generateRandomString();
+        const templateVars = { accounts: data.rows, password, organizationId, username, url, category };
+        res.render("createAccount", templateVars);
       })
       .catch(err => {
         res
@@ -65,3 +95,4 @@ module.exports = (db) => {
   });
   return router;
 };
+
