@@ -29,6 +29,10 @@ button.logout {
   margin: 0 0.5em 0 0;
 }
 
+h2 {
+  flex-direction: space-between;
+}
+
 body {
   // display: flex;
   // flex-direction: column;
@@ -39,8 +43,35 @@ body {
   background-color: #ffffff;
 }
 
+table {
+  display: flex;
+  flex-direction: column;
+  justify-items: space-between;
+}
+
+// NOT WORKING
+thead {
+  margin: 5 em;
+  flex-direction: center;
+  justify-content: space-between;
+  justify-items: center;
+  // display: center;
+}
+
 // .fas fa-lock {
 //   display: flex;
 //   justify-content: flex-start;
 //   align-items: center;
 // }
+
+div.slidecontainer {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.g-buttons {
+  display: flex;
+  flex-direction: column;
+  font-size: 40px;
+}
