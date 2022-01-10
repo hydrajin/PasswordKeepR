@@ -66,8 +66,11 @@ thead {
 
 div.slidecontainer {
   display: flex;
-  justify-content: flex-start;
   flex-direction: row;
+}
+
+input.slider {
+  margin: 0 0 0 1 em;
 }
 
 .g-buttons {
