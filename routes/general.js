@@ -7,6 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const generatePassword = require("../public/scripts/generate_password");
 
 const generateRandomString = function() {
   let randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -38,7 +39,6 @@ module.exports = (db) => {
     const organizationId = req.params.organization_id;
     db.query(`SELECT * FROM accounts WHERE organization_id = $1;`,[organizationId])
       .then(data => {
-        console.log("==========xx", data.rows);
         const templateVars = { accounts: data.rows, password: null, organizationId };
         res.render("generatePassword", templateVars);
       })
@@ -56,10 +56,10 @@ module.exports = (db) => {
     const category = req.body.category;
     db.query(`SELECT * FROM accounts WHERE organization_id = $1;`,[organizationId])
       .then(data => {
-        console.log("==========xx", data.rows);
-        const password = generateRandomString();
+        const password = generatePassword();
         const templateVars = { accounts: data.rows, password, organizationId, username, url, category };
         res.render("createAccount", templateVars);
+        console.log(templateVars);
       })
       .catch(err => {
         res
