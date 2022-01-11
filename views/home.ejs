@@ -26,7 +26,7 @@
   </head>
   <body>
     <i class="fas fa-lock"></i>
-    <h2><%=organizationName%> shared Accounts</h2>
+    <h2>All shared Accounts</h2>
     <table class="table">
       <thead>
         <tr>
@@ -34,9 +34,11 @@
           <th scope="col">Website</th>
           <th scope="col">Username</th>
           <th scope="col">Password</th>
+          <% if(userCookie) { %>
           <th scope="col" style="padding-left: 20px">Copy</th>
           <th scope="col" style="padding-left: 20px">Edit</th>
           <th scope="col" style="padding-left: 20px">Delete</th>
+          <% } %>
         </tr>
       </thead>
       <tbody>
@@ -47,7 +49,9 @@
           <td><%= account.username %></td>
           <!-- We need to select this value -->
           <td><input type="text" class="password"value=<%= account.password %>
-          <td>
+            <% if(userCookie) { %>
+
+            <td>
             <!-- USE jQuery to select a specific value -->
             <!-- <form method="GET" action=""> -->
               <button class="copy">Copy</button>
@@ -80,6 +84,7 @@
               <button class="btn btn-outline-danger">Delete</button>
             </form>
           </td>
+          <% } %>
         </tr>
         <% } %>
       </tbody>

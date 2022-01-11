@@ -17,16 +17,31 @@ const generateRandomString = function() {
   return result;
 };
 
+// router.get("/", (req, res) => {
+//   const organizationId = req.params.organization_id;
+//   db.query(`SELECT * FROM accounts WHERE organization_id = $1;`, [organizationId])
+//     .then(data => {
+//       console.log(data.rows);
+//       const templateVars = {accounts:data.rows};
+//       res.render("index",templateVars);
+//     })
+//     .catch(err => {
+//       res
+//         .status(500)
+//         .json({ error: err.message });
+//     });
+// });
 
 module.exports = (db) => {
   // Routes to the "Main" page
   router.get("/", (req, res) => {
-    const organizationId = req.params.organization_id;
-    db.query(`SELECT * FROM accounts WHERE organization_id = $1;`, [organizationId])
+    // const organizationId = req.params.organization_id;
+    db.query(`SELECT * FROM accounts`, [])
       .then(data => {
         console.log(data.rows);
-        const templateVars = {accounts:data.rows};
-        res.render("index",templateVars);
+        const userCookie = req.cookies["User"];
+        const templateVars = {accounts:data.rows, userCookie};
+        res.render("home",templateVars);
       })
       .catch(err => {
         res
@@ -40,9 +55,10 @@ module.exports = (db) => {
     // const organizationName = req.params.organization.name;
     db.query(`SELECT accounts.*, organization.name,  organization.owner  FROM accounts  JOIN organization ON accounts.organization_id = organization.id  WHERE organization.id = $1;`, [organizationId])
       .then(data => {
-        const orgnazationName = data.rows[0].organization_name;
-        // console.log(data.rows.organization.name);
-        const templateVars = { accounts:data.rows, orgnazationName };
+        const organizationName = data.rows[0].name;
+        console.log(data.rows);
+        console.log(organizationName);
+        const templateVars = { accounts:data.rows, organizationName, organization_id:organizationId };
         res.render("index",templateVars);
       })
       .catch(err => {
@@ -152,12 +168,12 @@ module.exports = (db) => {
   //! Login/Set Cookie
   router.get("/login/:id", (req, res) => { // for distinct user
     const userId = req.params.id;
-    res.cookie("User",userId);
-    db.query(`SELECT users.id FROM users WHERE id = $1;`,[userId])
+    db.query(`SELECT id FROM users WHERE id = $1;`,[userId])
       .then(data => {
         // console.log("user!!", data.rows);
         // const templateVars = { user: data.rows };
         // res.render(templateVars);
+        res.cookie("User",userId); // sets cookie
         res.redirect("/");
       })
       .catch(err => {
