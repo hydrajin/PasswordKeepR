@@ -1,5 +1,7 @@
+// $=jQuery;
 
-$( document ).ready(function() {
+
+$(document).ready(function() {
   const characterAmountRange = document.getElementById('characterAmountRange')
   const characterAmountNumber = document.getElementById('characterAmountNumber')
   const includeLowercaseElement = document.getElementById('includeLowercase')
@@ -30,6 +32,7 @@ $( document ).ready(function() {
     arrayFromLowToHigh(123, 126)
   )
   
+ 
   characterAmountNumber.addEventListener('input', syncCharacterAmount)
   characterAmountRange.addEventListener('input', syncCharacterAmount)
   function generatePassword(characterAmount, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
