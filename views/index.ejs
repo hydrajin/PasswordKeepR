@@ -41,17 +41,18 @@
       </thead>
       <tbody>
         <% for(let account of accounts) { %>
-        <tr>
+        <tr class="rowData">
           <td><%= account.category %></td>
           <td><%= account.url %></td>
           <td><%= account.username %></td>
           <!-- We need to select this value -->
-          <td><input type="text" id="myInput"value=<%= account.password %></td>
+          <td><input type="text" class="password"value=<%= account.password %>
           <td>
-            USE jQuery to select a specific value
+            <!-- USE jQuery to select a specific value -->
             <!-- <form method="GET" action=""> -->
-              <button onclick="copyPassword()" class="btn btn-outline-primary">Copy</button>
-              <script>
+              <button class="copy">Copy</button>
+              <!-- <button onclick="copyPassword()" class="btn btn-copy">Copy</button> -->
+              <!-- <script>
                 function copyPassword() {
                   /* Get the text field */
                   let copyText = document.getElementById("myInput");
@@ -66,7 +67,7 @@
                   /* Alert the copied text */
                   alert("Copied the text: " + copyText.value);
                 }
-              </script>
+              </script> -->
             </form>
           </td>
           <td>
