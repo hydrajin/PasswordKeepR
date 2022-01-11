@@ -93,6 +93,43 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+  // TODO Login GET/POST set a cookie with cookie parser
+  // Routes to login 1 user
+  router.get("/users/:id", (req, res) => { // for distinct user
+    const userId = req.params.id;
+    db.query(`SELECT * FROM users WHERE id = $1;`,[userId])
+      .then(data => {
+        console.log("user!!", data.rows);
+        const templateVars = { users: data.rows };
+        // res.render(templateVars);
+        res.json({ templateVars });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.post("/users/:id", (req, res) => { // for distinct user
+    const userId = req.params.id;
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+    db.query(`SELECT * FROM users WHERE id = $1;`,[userId])
+      .then(data => {
+        console.log("==========xx", data.rows);
+        const templateVars = { users: data.rows, password, userId, name, email };
+        // res.render(templateVars);
+        res.json({ templateVars });
+        // if we wanted account we do templateVars.password
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
   return router;
 };
 
