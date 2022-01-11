@@ -38,7 +38,7 @@ module.exports = (db) => {
     const organizationId = req.params.organization_id;
     db.query(`SELECT * FROM accounts WHERE organization_id = $1;`,[organizationId])
       .then(data => {
-        console.log("==========xx", data.rows);
+        console.log("Organization", data.rows);
         const templateVars = { accounts: data.rows, password: null, organizationId };
         res.render("generatePassword", templateVars);
       })
@@ -56,7 +56,7 @@ module.exports = (db) => {
     const category = req.body.category;
     db.query(`SELECT * FROM accounts WHERE organization_id = $1;`,[organizationId])
       .then(data => {
-        console.log("==========xx", data.rows);
+        console.log("Organization", data.rows);
         const password = generateRandomString();
         const templateVars = { accounts: data.rows, password, organizationId, username, url, category };
         res.render("createAccount", templateVars);
@@ -81,10 +81,11 @@ module.exports = (db) => {
       });
   });
   // shows the .JSON of the users db files
-  router.get("/users", (req, res) => { // /api/users/accounts
+  router.get("/user", (req, res) => { // /api/users/accounts
     db.query(`SELECT * FROM users;`)
       .then(data => {
         const users = data.rows;
+        console.log(users);
         res.json({ users });
       })
       .catch(err => {
@@ -95,12 +96,12 @@ module.exports = (db) => {
   });
   // TODO Login GET/POST set a cookie with cookie parser
   // Routes to login 1 user
-  router.get("/users/:id", (req, res) => { // for distinct user
+  router.get("/user/:id", (req, res) => { // for distinct user
     const userId = req.params.id;
     db.query(`SELECT * FROM users WHERE id = $1;`,[userId])
       .then(data => {
         console.log("user!!", data.rows);
-        const templateVars = { users: data.rows };
+        const templateVars = { user: data.rows };
         // res.render(templateVars);
         res.json({ templateVars });
       })
@@ -111,7 +112,7 @@ module.exports = (db) => {
       });
   });
 
-  router.post("/users/:id", (req, res) => { // for distinct user
+  router.post("/user/:id", (req, res) => { // for distinct user
     const userId = req.params.id;
     const name = req.body.name;
     const email = req.body.email;
@@ -119,7 +120,7 @@ module.exports = (db) => {
     db.query(`SELECT * FROM users WHERE id = $1;`,[userId])
       .then(data => {
         console.log("==========xx", data.rows);
-        const templateVars = { users: data.rows, password, userId, name, email };
+        const templateVars = { user: data.rows, password, userId, name, email };
         // res.render(templateVars);
         res.json({ templateVars });
         // if we wanted account we do templateVars.password
