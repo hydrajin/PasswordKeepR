@@ -33,6 +33,7 @@ const generateRandomString = function() {
 // });
 
 module.exports = (db) => {
+
   // Routes to the "Main" page
   router.get("/", (req, res) => {
     // const organizationId = req.params.organization_id;
@@ -40,7 +41,7 @@ module.exports = (db) => {
       .then(data => {
         console.log(data.rows);
         const userCookie = req.cookies["User"];
-        const templateVars = {accounts:data.rows, userCookie};
+        const templateVars = { accounts:data.rows, userCookie };
         res.render("home",templateVars);
       })
       .catch(err => {
@@ -49,6 +50,25 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  //! Logout/clear cookies (ORDER MATTERS)
+  // router.post("/logout", (req,res) => {
+  //   res.clearCookie("User");
+  //   res.redirect("/");
+  // });
+
+  router.get("/logout", (req, res) => { // for distinct user
+    // console.log("user!!", data.rows);
+    // const templateVars = { user: data.rows };
+    // res.render(templateVars);
+    // res.clearCookie("User"); // sets cookie
+    // res.cookie = null;
+    res.clearCookie("user_id");
+    res.clearCookie("organizationId");
+    return res.redirect("/");
+
+  });
+
 
   router.get("/:organization_id", (req, res) => {
     const organizationId = req.params.organization_id;
@@ -83,19 +103,16 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-
-  router.post("/generate/:organization_id", (req, res) => { // for distinct organization
+  router.get("/:organization_id", (req, res) => {
     const organizationId = req.params.organization_id;
-    const username = req.body.username;
-    const url = req.body.url;
-    const category = req.body.category;
-    db.query(`SELECT * FROM accounts WHERE organization_id = $1;`,[organizationId])
+    // const organizationName = req.params.organization.name;
+    db.query(`SELECT accounts.*, organization.name,  organization.owner  FROM accounts  JOIN organization ON accounts.organization_id = organization.id  WHERE organization.id = $1;`, [organizationId])
       .then(data => {
-        console.log("Organization", data.rows);
-        const password = generateRandomString();
-        const templateVars = { accounts: data.rows, password, organizationId, username, url, category };
-        res.render("createAccount", templateVars);
-        // if we wanted account we do templateVars.password
+        const organizationName = data.rows[0].name;
+        console.log(data.rows);
+        console.log(organizationName);
+        const templateVars = { accounts:data.rows, organizationName, organization_id:organizationId };
+        res.render("index",templateVars);
       })
       .catch(err => {
         res
@@ -103,6 +120,54 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  //!----------------------------------------------------------------
+  //! http://localhost:8080/3/1 (Directs the organization_id = 3 with "user" 1)
+  // router.get("/:organization_id/:owner", (req, res) => { // for distinct organization
+  //   const organizationId = req.params.organization_id;
+  //   const userId = req.params.owner;
+
+  //   db.query(`SELECT accounts.*, organization.name, organization.owner
+  //   FROM accounts
+  //   JOIN organization ON accounts.organization_id = organization.id
+  //   WHERE organization.id = $1
+  //   AND ogrganization.owner = $2;`, [organizationId, userId])
+  //     .then(data => {
+  //       console.log("TEST1", data.rows);
+  //       const templateVars = {  accounts: data.rows , organizationId, userId };
+  //       res.render("index", templateVars);
+  //     })
+  //     .catch(err => {
+  //       res
+  //         .status(500)
+  //         .json({ error: err.message });
+  //     });
+  // });
+
+  // //~ user_id is actually owner?
+  // router.post("/:organization_id/:owner", (req, res) => { // for distinct organization
+  //   const organizationId = req.params.organization_id;
+  //   const userId = req.params.owner;
+  //   db.query(`SELECT accounts.*, organization.name, organization.owner
+  //   FROM accounts
+  //   JOIN organization ON accounts.organization_id = organization.id
+  //   WHERE organization.id = $1
+  //   AND organization.owner = $2;`, [organizationId, userId])
+  //     .then(data => {
+  //       console.log("TEST2", data.rows);
+  //       // const password = generateRandomString();
+  //       const templateVars = { accounts: data.rows , organizationId, userId };
+  //       res.render("index", templateVars);
+  //       // if we wanted account we do templateVars.password
+  //     })
+  //     .catch(err => {
+  //       res
+  //         .status(500)
+  //         .json({ error: err.message });
+  //     });
+  // });
+
+  //!----------------------------------------------------------------------------------------------------
   // Shows the .JSON of ALL accounts db files
   router.get("/accounts", (req, res) => {
     db.query(`SELECT * FROM accounts;`)
@@ -170,22 +235,27 @@ module.exports = (db) => {
   //! Login/Set Cookie
   router.get("/login/:id", (req, res) => { // for distinct user
     const userId = req.params.id;
-    db.query(`SELECT id FROM users WHERE id = $1;`,[userId])
+    db.query(`SELECT * FROM organization_users WHERE id = $1;`,[userId]) //! join emails
       .then(data => {
-        // console.log("user!!", data.rows);
+        console.log("user!!", data.rows);
+        if (data.rows.length < 1) {
+          console.log("Invalid ID!");
+          return res.redirect("/");
+        }
         // const templateVars = { user: data.rows };
         // res.render(templateVars);
-        res.cookie("User",userId); // sets cookie
-        res.redirect("/");
+        res.cookie("user_id", userId); // sets cookie
+        // res.cookie("email", data.rows[0].email); // sets cookie //! join emails
+        res.cookie("organizationId", data.rows[0].organization_id); // sets cookie
+        res.redirect("/users/accounts");
       })
       .catch(err => {
+        console.log("----------", err.message);
         res
           .status(500)
           .json({ error: err.message });
       });
   });
-
-
 
   return router;
 };
