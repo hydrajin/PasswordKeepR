@@ -2,7 +2,7 @@ nav {
   font-family: "Russo One", sans-serif;
   background-color: #ce5454;
   justify-content: space-between;
-  display: flex-start;
+  display: flex;
   height: 50px;
   color: #ffffff;
   // position: fixed;
@@ -10,11 +10,28 @@ nav {
   // top: 0;
 }
 
+.navbar-links {
+  justify-content: flex-end;
+  flex: 1;
+  display: flex;
+  a {
+    margin-right: 1em;
+    background-color: white;
+    text-decoration: none;
+    padding: 0.5em;
+  }
+  form {
+    display: flex;
+    align-items: center;
+  }
+}
+
 .container {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  width: 100%;
 }
 
 .login {
