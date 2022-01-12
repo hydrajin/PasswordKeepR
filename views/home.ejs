@@ -14,8 +14,59 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
 
+  </head>
+  <body>
     <header class="header">
       <nav class="navbar">
+        </nav>
+    <!-- <nav class="navbar navbar-expand-md navbar-dark bg-success"> -->
+      <%- include('partials/_header') %>
+      <!-- <a class="navbar-brand" href="/account">PasswordKeepR</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="/accounts">View Accounts</a>
+          <a class="nav-item nav-link" href="/urls/new" >Create New URL</a>
+      </div> -->
+      </header>
+    <i class="fas fa-lock"></i>
+    <h2>Please Log In!</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Category</th>
+          <th scope="col">Website</th>
+          <th scope="col">Username</th>
+          <th scope="col">Password</th>
+          <!-- if there is a user cookie (true) -->
+          <% if(userCookie) { %>
+          <!-- give acces to copy/edit/delete  -->
+          <th scope="col" style="padding-left: 20px">Copy</th>
+          <th scope="col" style="padding-left: 20px">Edit</th>
+          <th scope="col" style="padding-left: 20px">Delete</th>
+          <% } %>
+        </tr>
+        </thead>
+        <tbody> 
+        <% for(let account of accounts) { %>
+        <tr class="rowData">
+          <td><%= account.category %></td>
+          <td><%= account.url %></td>
+          <td><%= account.username %></td>
+          <!-- We need to select this value -->
+          <td><input type="text" class="password"value=<%= account.password %>
+           </td>
+
+            <td>
+              <button class="copy">Copy</button>
+            </td>
+              <!-- <button onclick="copyPassword()" class="btn btn-copy">Copy</button> -->
+              <!-- <script>
+                function copyPassword() {
+                  /* Get the text field */
+                  let copyText = document.getElementById("myInput");
 
         <div class="container">
           <a class="navbar-brand" href="/">🔒PasswordKeepR•••</a>
@@ -42,13 +93,34 @@
     </div>
 
       <!-- TEST -->
-      <div class="dropup">
+      <!-- <div class="dropup">
         <button class="dropbtn">🌐</button>
         <div class="dropup-content">
           <a href="#">French</a>
           <a href="#">English</a>
         </div>
       </div>
+                  /* Alert the copied text */
+                  alert("Copied the text: " + copyText.value);
+                }
+              </script> -->
+           
+    
+          <td>
+            <form method="GET" action="">
+              <button class="btn btn-outline-primary">Edit</button>
+            </form>
+          </td>
+          <td>
+            <form method="POST" action="/passwords/<%= account.password %>/delete">
+              <button class="btn btn-outline-danger" type="submit">Delete</button>
+            </form>
+          </td>
+ 
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
   </body>
   <script>
     let coll = document.getElementsByClassName("collapsible");
@@ -66,3 +138,4 @@
     }
     </script>
 </html>
+ 

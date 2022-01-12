@@ -257,6 +257,13 @@ module.exports = (db) => {
       });
   });
 
+  router.post("/passwords/:password/delete", (req, res) => {
+    let passwordId = req.params.password;
+    console.log("delete password", passwordId);
+    res.redirect("/");
+  });
+
+
   return router;
 };
 
