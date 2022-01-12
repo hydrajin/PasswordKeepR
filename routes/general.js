@@ -62,8 +62,10 @@ module.exports = (db) => {
     // const templateVars = { user: data.rows };
     // res.render(templateVars);
     // res.clearCookie("User"); // sets cookie
-    res.cookie = null;
-    res.redirect("/");
+    // res.cookie = null;
+    res.clearCookie("user_id");
+    res.clearCookie("organizationId");
+    return res.redirect("/");
 
   });
 
