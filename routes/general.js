@@ -34,6 +34,7 @@ const generateRandomString = function() {
 
 module.exports = (db) => {
 
+
   // Routes to the "Main" page
   router.get("/", (req, res) => {
     // const organizationId = req.params.organization_id;
@@ -258,10 +259,37 @@ module.exports = (db) => {
   });
 
   router.post("/passwords/:password/delete", (req, res) => {
-    let passwordId = req.params.password;
+
+    let passwordId = req.params.password; 
+    db.query ("DELETE FROM accounts WHERE id = $1",[passwordId])
+    .then (data => { 
     console.log("delete password", passwordId);
     res.redirect("/");
+    
+  })
+  .catch(err => {
+    console.log("----------", err.message);
+    res
+      .status(500)
+      .json({ error: "Unable to Delete"});
   });
+});
+
+router.post ("/passwords/:id/edit", (req, res) => {
+ let passwordId = req.params.id; 
+    db.query (" UPDATE accounts SET password = $1 WHERE id = $2",[req.body.password, passwordId])
+    .then (data => { 
+    console.log("delete password", passwordId);
+    res.redirect("/");
+    
+  })
+  .catch(err => {
+    console.log("----------", err.message);
+    res
+      .status(500)
+      .json({ error: "Unable to Delete"});
+  });
+});
 
 
   return router;
