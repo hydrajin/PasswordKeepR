@@ -66,16 +66,4 @@ $(document).ready(function() {
   }
 
 
-});   // document.ready (code inside)
-
-
-
-
-
-  
-  
-  
-
-
-
-// module.exports = { generatePassword }
+});  
