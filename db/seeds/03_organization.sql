@@ -1,5 +1,5 @@
-INSERT INTO organization (id, name, owner) VALUES (1, 'Kwilith', 'Sheba Auletta');
-INSERT INTO organization (id, name, owner) VALUES (2, 'Chatterpoint', 'Davon Cregeen');
-INSERT INTO organization (id, name, owner) VALUES (3, 'Vinder', 'Keen Jillings');
-INSERT INTO organization (id, name, owner) VALUES (4, 'Yabox', 'Leroi Jump');
-INSERT INTO organization (id, name, owner) VALUES (5, 'Yabox', 'Stern Grayshon');
+INSERT INTO organization (name, owner) VALUES ('Kwilith', 'Sheba Auletta');
+INSERT INTO organization (name, owner) VALUES ('Chatterpoint', 'Davon Cregeen');
+INSERT INTO organization (name, owner) VALUES ('Vinder', 'Keen Jillings');
+INSERT INTO organization (name, owner) VALUES ('Yabox', 'Leroi Jump');
+INSERT INTO organization (name, owner) VALUES ('Shopify', 'Stern Grayshon');
