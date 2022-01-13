@@ -248,8 +248,6 @@ module.exports = (db) => {
         res.cookie("user_id", userId); // sets cookie for user
         // res.cookie("email", data.rows[0].email); // sets cookie //! join emails
         res.cookie("organizationId", data.rows[0].organization_id); // sets cookie
-        const cookie = res.cookies.organization_id;
-        console.log("Cookie",cookie);
         res.redirect("/users/accounts");
       })
       .catch(err => {
