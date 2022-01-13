@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const {newPasswordToDatabase } = require("../public/helpers");
+const {newPasswordToDatabase, deletePasswordFromDb } = require("../public/helpers");
 // const generatePassword = require("../public/scripts/generate_password");
 
 module.exports = (db) => {
@@ -61,6 +61,7 @@ module.exports = (db) => {
         .json({ error: err.message });
     });
   });
+
       
  
 
@@ -234,7 +235,7 @@ module.exports = (db) => {
     const userId = req.params.id;
     console.log("userId", userId)
 
-    db.query(`SELECT * FROM organization_users WHERE id = $1;`,[userId]) //! join emails
+    db.query(`SELECT * FROM organization_users WHERE user_id = $1;`,[userId]) //! join emails
 
       .then(data => {
         console.log(data)
