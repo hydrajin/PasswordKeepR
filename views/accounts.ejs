@@ -71,12 +71,12 @@
             </form>
           </td>
           <td>
-            <form method="GET" action="">
+            <form method="POST" action="/accounts/passwords/<%=account.password%>">
               <button class="btn btn-outline-primary">Edit</button>
             </form>
           </td>
           <td>
-            <form method="POST" action="">
+             <form method="POST" action="/accounts/<%=account.password%>/delete">
               <button class="btn btn-outline-danger">Delete</button>
             </form>
           </td>
