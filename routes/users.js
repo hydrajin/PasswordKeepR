@@ -58,8 +58,9 @@ let accountId = req.params.id;
 // console.log()     
 db.query ("DELETE FROM accounts WHERE id = $1",[accountId])     
 .then (data => {      
-console.log("delete account by id", accountId);     
-// res.redirect("/");        
+console.log("delete account by id", accountId); 
+   
+res.redirect("/users/accounts");        
 })   .catch(err => {    
   console.log("----------", err.message);     
   res       
@@ -84,22 +85,24 @@ console.log("delete account by id", accountId);
 
 
 
-  router.post ("/accounts/:password/edit", (req, res) => {  
-    let password = req.params.password;     
-    db.query (" UPDATE accounts SET password = $1 WHERE id = $2",[req.body.password, passwordId])    
+  router.post ("/accounts/:id/edit", (req, res) => {  
+    console.log("aaaaaaaaaaaa")
+    let id = req.params.id;  
+      
+    const {password} = req.body;
+    console.log("password", password)
+    db.query (" UPDATE accounts SET password = $1 WHERE id = $2",[password, id])    
       .then (data => {      
-        console.log("delete password", passwordId);     
-        res.redirect("/");        })   
+        // console.log("delete password", passwordId);     
+        res.redirect("/users/accounts");       
+       })   
         .catch(err => {     
-          console.log("----------", err.message);    
-          res      
-           
-           .status(500)      
+          console.log("----------", err.message);  
+
+          res.status(500)      
             .json({ error: "Unable to Delete"});   
           }); 
         });     
-       
-
   });
   return router;
 };

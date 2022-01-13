@@ -1,6 +1,6 @@
 $(document).ready(function() {
   let $generatePassword
-  $(document).on("click", ".copy", function() {
+  $(".copy").on("click", function() {
 
     //! This changes all copy buttons into a red CAPITALIZED button
     // We target the parent of the copy button (rowData)
@@ -15,10 +15,17 @@ $(document).ready(function() {
     
   });
 
-  // const fillAlertError = function (notification) {
-  //   console.log("ran!");
-  //   $('.copy').html('<label class="alert alert-danger" role="alert" style="position:abolute;z-index:999;">' + notification + '</label>');
-  // };
+ $(document).on("click", ".edit_password", function(event){
+  event.preventDefault();
+  const password = $(this).closest("tr").find("input.password").val();
+  const url = $(this).data("url");
+  const accountId = $(this).closest("tr").find(".account_id").html();
+  $.post(url, { id: accountId, password: password })
+  .then(() => 
+  alert("success"));
+ })
+
+
   
   const characterAmountRange = document.getElementById('characterAmountRange')
   const characterAmountNumber = document.getElementById('characterAmountNumber')

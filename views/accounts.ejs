@@ -9,7 +9,6 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
       <%- include('partials/_header') %>
-    </form>
   </head>
   <body>
     <i class="fas fa-lock"></i>
@@ -32,39 +31,22 @@
           <td><%= account.category %></td>
           <td><%= account.url %></td>
           <td><%= account.username %></td>
-          <td><%= account.id %></td>
+          <td class="account_id"><%= account.id %></td>
           <!-- We need to select this value -->
-          <td><input type="text" class="password"value=<%= account.password %>
+          <td><input type="text" class="password"value=<%= account.password %> > </td>
           <td>
-            <!-- USE jQuery to select a specific value -->
-            <!-- <form method="GET" action=""> -->
+            
               <button class="copy">Copy</button>
-              <!-- <button onclick="copyPassword()" class="btn btn-copy">Copy</button> -->
-              <!-- <script>
-                function copyPassword() {
-                  /* Get the text field */
-                  let copyText = document.getElementById("myInput");
-
-                  /* Select the text field */
-                  copyText.select();
-                  copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-                  /* Copy the text inside the text field */
-                  navigator.clipboard.writeText(copyText.value);
-
-                  /* Alert the copied text */
-                  alert("Copied the text: " + copyText.value);
-                }
-              </script> -->
-            </form>
+              
+            
           </td>
           <td>
-            <form method="GET" action="/users/accounts/<%= account.id %>/edit">
-              <button class="btn btn-outline-primary">Edit</button>
-            </form>
+            <!-- <form  method="POST" action="/users/accounts/<%= account.id %>/edit">
+              -->
+              <button  class="btn btn-outline-primary edit_password" data-url= "/users/accounts/<%= account.id %>/edit">Edit</button>
+            <!-- </form> -->
           </td>
-          <td>
-           
+          <td> 
             <form method="POST" action="/users/accounts/<%= account.id %>/delete">
               <button class="btn btn-outline-danger">Delete</button>
             </form>
@@ -75,3 +57,5 @@
     </table>
   </body>
 </html>
+
+
