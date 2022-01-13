@@ -1,8 +1,25 @@
-// Client facing scripts here
-// $=jQuery;
-
-
 $(document).ready(function() {
+  let $generatePassword
+  $(document).on("click", ".copy", function() {
+
+    //! This changes all copy buttons into a red CAPITALIZED button
+    // We target the parent of the copy button (rowData)
+    let parentElement = $(this).parents('.rowData');
+    // We find the class with the closest
+    let passwordElement = parentElement.find('.password');
+    //sends an alert with the passwordElement
+    let copied = passwordElement.select();
+    document.execCommand(".copy");
+    alert("Copied to clipboard: " + copied.val());
+    // fillAlertError("Copied to clipboard:");
+    
+  });
+
+  // const fillAlertError = function (notification) {
+  //   console.log("ran!");
+  //   $('.copy').html('<label class="alert alert-danger" role="alert" style="position:abolute;z-index:999;">' + notification + '</label>');
+  // };
+  
   const characterAmountRange = document.getElementById('characterAmountRange')
   const characterAmountNumber = document.getElementById('characterAmountNumber')
   const includeLowercaseElement = document.getElementById('includeLowercase')
@@ -11,7 +28,28 @@ $(document).ready(function() {
   const includeSymbolsElement = document.getElementById('includeSymbols')
   const form = document.getElementById('passwordGeneratorForm')
   const passwordDisplay = document.getElementById('passwordDisplay')
-  document.getElementById("passwordGeneratorForm").addEventListener("submit", function(event){
+  
+ 
+
+  $("#save").click(function(event) {
+    event.preventDefault()
+    const category = $("#category").val();
+    const username = $("#username").val();
+    const url = $("#url").val();
+    const  created_at = $("#created_at").val();
+    if (!url) {
+      alert("empty")
+      return;
+    }
+    $.post( "/accounts/new", { category, username, url, created_at, password: $generatePassword })
+      .done(function( data ) {
+      // alert( "Data Loaded: " + data );
+    });
+
+    });
+
+  $("#generate_password").click(function(event) {
+
     event.preventDefault()
     const characterAmount = characterAmountNumber.value
     const includeLowercase = includeLowercaseElement.checked
@@ -48,6 +86,7 @@ $(document).ready(function() {
       const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
       passwordCharacters.push(String.fromCharCode(characterCode))
     }
+    $generatePassword = passwordCharacters.join('');
     return passwordCharacters.join('')
   }
   
@@ -65,5 +104,7 @@ $(document).ready(function() {
     characterAmountRange.value = value
   }
 
+
+ 
 
 });  
