@@ -51,9 +51,10 @@ const generalRoutes = require("./routes/general");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-// app.use("/api/users", usersRoutes(db)); //! set cookie for a user
+app.use("/api/users", usersRoutes(db)); //! set cookie for a user // json data
 // app.use("/api/widgets", widgetsRoutes(db));
 app.use("/", generalRoutes(db));
+app.use("/users", usersRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
