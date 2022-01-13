@@ -7,87 +7,63 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/main.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/home.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
 
-    <!-- <nav class="navbar navbar-expand-md navbar-dark bg-success"> -->
-      <%- include('partials/_header') %>
-      <!-- <a class="navbar-brand" href="/account">PasswordKeepR</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" href="/accounts">View Accounts</a>
-          <a class="nav-item nav-link" href="/urls/new" >Create New URL</a>
-      </div> -->
-    </form>
-  </head>
+    <header class="header">
+      <nav class="navbar">
+
+        <div class="container">
+          <a class="navbar-brand" href="/">🔒PasswordKeepR•••</a>
+          <p>How It Works</p>
+          <p>Pricing</p>
+          <p>Business</p>
+          <p>Resources</p>
+          <p class="login">Log In</p>
+          <button type="submit" class="floating-btn logout">TRY PasswordKeepR</button>
+          </div>
+        </nav>
+    </header>
   <body>
-    <i class="fas fa-lock"></i>
-    <h2>Please Log In!</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Category</th>
-          <th scope="col">Website</th>
-          <th scope="col">Username</th>
-          <th scope="col">Password</th>
-          <!-- if there is a user cookie (true) -->
-          <% if(userCookie) { %>
-          <!-- give acces to copy/edit/delete  -->
-          <th scope="col" style="padding-left: 20px">Copy</th>
-          <th scope="col" style="padding-left: 20px">Edit</th>
-          <th scope="col" style="padding-left: 20px">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% for(let account of accounts) { %>
-        <tr class="rowData">
-          <td><%= account.category %></td>
-          <td><%= account.url %></td>
-          <td><%= account.username %></td>
-          <!-- We need to select this value -->
-          <td><input type="text" class="password"value=<%= account.password %>
+    <h1>HOMEPAGE</h1>
 
-            <td>
-            <!-- USE jQuery to select a specific value -->
-            <!-- <form method="GET" action=""> -->
-              <button class="copy">Copy</button>
-              <!-- <button onclick="copyPassword()" class="btn btn-copy">Copy</button> -->
-              <!-- <script>
-                function copyPassword() {
-                  /* Get the text field */
-                  let copyText = document.getElementById("myInput");
+    <h3>Share your organizations passwords seemlessly and securely</h3>
+    <h5>Protect every access point while seamlessly connecting employees to their work.</h5>
+    <button type="button" class="collapsible">Learn More</button>
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div>
+      <img class="trusted" src="https://www.thesslstore.com/content/images/icon-trusted-brand-img.png" width="360 height="145>
+    </div>
 
-                  /* Select the text field */
-                  copyText.select();
-                  copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-                  /* Copy the text inside the text field */
-                  navigator.clipboard.writeText(copyText.value);
-
-                  /* Alert the copied text */
-                  alert("Copied the text: " + copyText.value);
-                }
-              </script> -->
-            </form>
-          </td>
-          <td>
-            <form method="GET" action="">
-              <button class="btn btn-outline-primary">Edit</button>
-            </form>
-          </td>
-          <td>
-            <form method="POST" action="">
-              <button class="btn btn-outline-danger">Delete</button>
-            </form>
-          </td>
-          <% } %>
-        </tr>
-        <% } %>
-      </tbody>
-    </table>
+      <!-- TEST -->
+      <div class="dropup">
+        <button class="dropbtn">🌐</button>
+        <div class="dropup-content">
+          <a href="#">French</a>
+          <a href="#">English</a>
+        </div>
+      </div>
   </body>
+  <script>
+    let coll = document.getElementsByClassName("collapsible");
+    let i;
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+    </script>
 </html>

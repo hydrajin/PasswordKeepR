@@ -2,8 +2,8 @@
   <nav class="navbar">
     <div class="container">
       <a class="navbar-brand" href="/">🔒PasswordKeepR</a>
-      <a class="navbar-link-a" href="/accounts">My Accounts</a>
-      <a class="navbar-link-b" href="/new/<%=locals.organization_id ? organization_id: ''%>">Generate Password</a>
+      <a class="navbar-link-a" href="/users/accounts">My Accounts</a>
+      <a class="navbar-link-b" href="/new/<%=organizationId ? organizationId: ''%>">Generate Password</a>
       <% if(true){ %>
 
         <span class="navbar-toggler-icon"></span>
