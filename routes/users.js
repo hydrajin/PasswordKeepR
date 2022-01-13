@@ -9,7 +9,7 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
+  router.get("/", (req, res) => { // means /users
     db.query(`SELECT * FROM users;`)
       .then(data => {
         const users = data.rows;
@@ -21,7 +21,7 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  router.get("/accounts", (req, res) => { // /api/users/accounts
+  router.get("/accounts", (req, res) => { // /users/accounts
     const userId = req.cookies["user_id"];
     if (!userId) {
       return res.redirect("/"); // homepage
@@ -29,7 +29,7 @@ module.exports = (db) => {
 
     let organizationId = req.cookies["organizationId"];
     console.log("+++++++++++", organizationId);
-    organizationId = parseInt(organizationId);
+    // organizationId = parseInt(organizationId);
     db.query(`SELECT * FROM organization WHERE id = $1`, [organizationId])
       .then(result => {
         const organization = result.rows[0];

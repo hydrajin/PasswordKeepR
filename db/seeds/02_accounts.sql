@@ -5,4 +5,3 @@ INSERT INTO accounts (id, organization_id, username, category, url, password, cr
 INSERT INTO accounts (id, organization_id, username, category, url, password, created_at) VALUES (5, 1, 'thaldane4', 'entertainment', 'www.snapchat.com', 'yfA9Ajq5N', '6/10/2021');
 
 
-        

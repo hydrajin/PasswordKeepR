@@ -235,7 +235,8 @@ module.exports = (db) => {
   //! Login/Set Cookie
   router.get("/login/:id", (req, res) => { // for distinct user
     const userId = req.params.id;
-    db.query(`SELECT * FROM organization_users WHERE id = $1;`,[userId]) //! join emails
+    db.query(`SELECT * FROM organization_users WHERE user_id = $1;`,[userId]) //! join emails
+    //changed to user_id
       .then(data => {
         console.log("user!!", data.rows);
         if (data.rows.length < 1) {
@@ -244,9 +245,11 @@ module.exports = (db) => {
         }
         // const templateVars = { user: data.rows };
         // res.render(templateVars);
-        res.cookie("user_id", userId); // sets cookie
+        res.cookie("user_id", userId); // sets cookie for user
         // res.cookie("email", data.rows[0].email); // sets cookie //! join emails
         res.cookie("organizationId", data.rows[0].organization_id); // sets cookie
+        const cookie = res.cookies.organization_id;
+        console.log("Cookie",cookie);
         res.redirect("/users/accounts");
       })
       .catch(err => {
