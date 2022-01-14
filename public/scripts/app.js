@@ -1,18 +1,19 @@
 $(document).ready(function() {
   let $generatePassword;
   $(".copy").on("click", function() {
-
     //! This changes all copy buttons into a red CAPITALIZED button
     // We target the parent of the copy button (rowData)
     let parentElement = $(this).parents('.rowData');
     // We find the class with the closest
     let passwordElement = parentElement.find('.password');
+    // const password = $(this).closest("tr").find("input.password").val();
+
     //sends an alert with the passwordElement
     let copied = passwordElement.select();
-    document.execCommand(".copy");
+    document.execCommand("copy");
+    // navigator.clipboard.writeText(copied.val());
     alert("Copied to clipboard: " + copied.val());
     // fillAlertError("Copied to clipboard:");
-
   });
 
   $(document).on("click", ".edit_password", function(event) {
@@ -83,8 +84,6 @@ $(document).ready(function() {
         alert("it didn't work");
       }
     });
-
-
   });
 
   $("#generate_password").click(function(event) {
