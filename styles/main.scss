@@ -4,7 +4,8 @@ nav {
   display: flex-start;
   height: 50px;
   color: #ffffff;
-  // position: fixed;
+  position: fixed;
+  top: 0;
   width: 100%;
   z-index: 1;
 }
@@ -30,6 +31,7 @@ button.logout {
 }
 
 h2 {
+  margin-top: 2em;
   flex-direction: space-between;
 }
 

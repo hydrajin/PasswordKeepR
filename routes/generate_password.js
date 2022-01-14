@@ -1,5 +1,5 @@
- // Routes to the "Generate Password" page
- router.get("/new/:organization_id", (req, res) => { // for distinct organization
+// Routes to the "Generate Password" page
+router.get("/new/:organization_id", (req, res) => { // for distinct organization
   const organizationId = req.params.organization_id;
   db.query(`SELECT * FROM accounts WHERE organization_id = $1;`,[organizationId])
     .then(data => {

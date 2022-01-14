@@ -1,15 +1,13 @@
 <header class="header">
   <nav class="navbar">
     <div class="container">
-      <a class="navbar-brand" href="/">🔒PasswordKeepR</a>
+      <a class="navbar-brand">🔒PasswordKeepR</a>
       <a class="navbar-link-a" href="/users/accounts">My Accounts</a>
-      <a class="navbar-link-b" href="/new/<%=organizationId ? organizationId: ''%>">Generate Password</a>
-      <% if(true){ %>
-
+      <a class="navbar-link-b" href="/new/<%=organizationId ? organizationId: ''%>">Generate Password</a
         <span class="navbar-toggler-icon"></span>
       <form action="/logout">
         <!-- removed method="POST" -->
         <button type="submit" class="logout">Logout</button>
-      <% } %>
+      </form>
       </div>
 </header>

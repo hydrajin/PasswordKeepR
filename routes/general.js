@@ -34,36 +34,37 @@ module.exports = (db) => {
     res.clearCookie("user_id");
     res.clearCookie("organizationId");
     return res.redirect("/");
-
   });
+
+
+
 
   // ROUT to insert new data
   router.post("/accounts/new", (req, res) => {
-    console.log("eeeeeeeeeeeee", req.body)
+    // console.log("eeeeeeeeeeeee", req.body);
     const username = req.body.username;
     const category = req.body.category;
     const url = req.body.url;
     const created_at = req.body.created_at;
     const password = req.body.password;
-    console.log("username@@@@@@@@", username + category + url, created_at, password );
-      const orgId = req.cookies.organizationId;
-      newPasswordToDatabase(orgId, category, url, password, username, created_at)
-   
+    console.log("Account Info", username + category + url, created_at, password);
+    const orgId = req.cookies.organizationId;
+    newPasswordToDatabase(orgId, category, url, password, username, created_at)
       .then(data => {
         console.log(data.rows);
-      newPasswordToDatabase(id, orgId, req.body.category, req.body.url, req.body.password);
-      res.send('This also worked! You can submit your own password');
-    })
-    .catch(err => {
-      console.log("errrrrrrrrrrrrrrrrrrrrror", err)
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+        // newPasswordToDatabase(orgId, req.body.category, req.body.url, req.body.password);
+        res.send('This also worked! You can submit your own password');
+      })
+      .catch(err => {
+        console.log("errrrrrrrrrrrrrrrrrrrrror", err);
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   });
 
-      
- 
+
+
 
 
 
@@ -76,7 +77,7 @@ module.exports = (db) => {
         console.log(data.rows);
         console.log(organizationName);
         const templateVars = { accounts:data.rows, organizationName, organization_id:organizationId };
-        res.render("index",templateVars);
+        res.render("accounts",templateVars);
       })
       .catch(err => {
         res
@@ -109,7 +110,7 @@ module.exports = (db) => {
         console.log(data.rows);
         console.log(organizationName);
         const templateVars = { accounts:data.rows, organizationName, organization_id:organizationId };
-        res.render("index",templateVars);
+        res.render("accounts",templateVars);
       })
       .catch(err => {
         res
@@ -233,12 +234,12 @@ module.exports = (db) => {
   //! Login/Set Cookie
   router.get("/login/:id", (req, res) => { // for distinct user
     const userId = req.params.id;
-    console.log("userId", userId)
+    console.log("userId", userId);
 
     db.query(`SELECT * FROM organization_users WHERE user_id = $1;`,[userId]) //! join emails
 
       .then(data => {
-        console.log(data)
+        console.log(data);
         console.log("user!!", data.rows);
         if (data.rows.length < 1) {
           console.log("Invalid ID!");
