@@ -15,7 +15,7 @@ $(document).ready(function() {
     
   });
 
- $(document).on("click", ".edit_password", function(event){
+$(document).on("click", ".edit_password", function(event){
   event.preventDefault();
   const password = $(this).closest("tr").find("input.password").val();
   const url = $(this).data("url");
@@ -23,7 +23,18 @@ $(document).ready(function() {
   $.post(url, { id: accountId, password: password })
   .then(() => 
   alert("success"));
- })
+})
+
+$(document).on("click", ".password_delete", function(event){
+  event.preventDefault();
+  // const password = $(this).closest("tr").find("input.password").val();
+  const url = $(this).data("url");
+  const accountId = $(this).closest("tr").find(".account_id").html(); 
+  $.post(url, { id: accountId})
+  .then(() => 
+  alert("success"));
+})  
+
 
 
   

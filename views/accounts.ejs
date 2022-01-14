@@ -33,7 +33,7 @@
           <td><%= account.username %></td>
           <td class="account_id"><%= account.id %></td>
           <!-- We need to select this value -->
-          <td><input type="text" class="password"value=<%= account.password %> > </td>
+          <td><input type="text" class="password"value="<%= account.password %>"> </td>
           <td>
             
               <button class="copy">Copy</button>
@@ -47,9 +47,9 @@
             <!-- </form> -->
           </td>
           <td> 
-            <form method="POST" action="/users/accounts/<%= account.id %>/delete">
-              <button class="btn btn-outline-danger">Delete</button>
-            </form>
+            <!-- <form method="POST" action="/users/accounts/<%= account.id %>/delete"> -->
+              <button class="btn btn-outline-danger password_delete" data-url= "/users/accounts/<%= account.id %>/delete">Delete</button>
+            <!-- </form> -->
           </td>
         </tr>
         <% } %>
