@@ -22,6 +22,7 @@
         </div>
       </nav>
 
+
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/main.css" type="text/css" />
@@ -33,29 +34,35 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
-
     <header class="header">
-
     </header>
   <body>
-    <h1>The most secure enterprise password manager</h1>
+    <div class ="back" style= background-color:red ></div>
 
-    <h3>Share your organizations passwords seemlessly and securely</h3>
-    <h5>Protect every access point while seamlessly connecting employees to their work.</h5>
+    <h1 class="page-h1">The most secure enterprise password manager</h1>
+
+    <h3 class="share">Share your organizations passwords seemlessly and securely</h3>
+    <h5 class="protect">Protect every access point while seamlessly connecting employees to their work.</h5>
     <button type="button" class="collapsible">Learn More</button>
     <div class="content">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p class="real">Passwords are a real security threat. Over 80% of hacking-related breaches are due to weak or stolen passwords, a recent report shows . So if you want to safeguard your personal info and assets, creating secure passwords is a big first step. And that’s where the LastPass Password Generator can help. Impossible-to-crack passwords are complex with multiple types of characters (numbers, letters, and symbols). Making your passwords different for each website or app also helps defend against hacking.</p>
     </div>
-    <div>
-      <img class="trusted" src="https://www.thesslstore.com/content/images/icon-trusted-brand-img.png" width="360 height="145>
+    <div  class="img-div" style="element.style { background: azure; }">
+      <img class="trusted" src="https://cdn.discordapp.com/attachments/929062198599368744/931562747513163806/images.png" style="margin-left:12em">
+      <img class="trusted" src="https://www.thesslstore.com/content/images/icon-trusted-brand-img.png" width="900 height="500>
+      <img class="trusted" src="https://cdn.discordapp.com/attachments/929062198599368744/931564978358607892/password.jpg" >
     </div>
+    <div class="last-text">
     Peace of mind everywhere you go
-Save a password once, and it’s instantly available on a single device type for Free.
-With Premium, LastPass goes everywhere you do, across all your devices.
+        Save a password once, and it’s instantly available on a single device type for Free.
+        With Premium, LastPass goes everywhere you do, across all your devices.
 
-TRUSTED BY MILLIONS
-LastPass is trusted by industry experts worldwide
-You deserve the best in security. LastPass keeps your information private, secure, and hidden (even from us).
+        TRUSTED BY MILLIONS
+        LastPass is trusted by industry experts worldwide
+        You deserve the best in security. LastPass keeps your information private, secure, and hidden (even from us).
+
+      </div>
+
       <!-- TEST -->
       <div class="dropup">
         <button class="dropbtn">🌐</button>
@@ -64,20 +71,6 @@ You deserve the best in security. LastPass keeps your information private, secur
           <a href="#">English</a>
         </div>
       </div>
+
   </body>
-  <script>
-    let coll = document.getElementsByClassName("collapsible");
-    let i;
-    for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else {
-          content.style.display = "block";
-        }
-      });
-    }
-    </script>
 </html>

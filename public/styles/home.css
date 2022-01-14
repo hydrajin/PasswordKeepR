@@ -8,14 +8,37 @@ nav {
   width: 100%;
 }
 
+body {
+  min-height: 200%;
+}
+
+.back {
+  background-color: #703836;
+  background-image: url("https://www.transparenttextures.com/patterns/tex2res4.png");
+}
+
 .navbar-links {
   justify-content: flex-end;
   flex: 1;
   display: flex;
 }
 
-h1 {
+.page-h1 {
   margin-top: 2em;
+  font-family: "Russo One", sans-serif;
+  margin-left: 400px;
+}
+
+.share {
+  margin-top: 2em;
+  font-family: "Russo One", sans-serif;
+  margin-left: 500px;
+}
+
+.protect {
+  margin-top: 2em;
+  font-family: "Russo One", sans-serif;
+  margin-left: 520px;
 }
 
 a {
@@ -92,20 +115,26 @@ ul.dropdown li a {
   display: block;
 }
 
-p:hover {
-  color: yellow;
+.last-text {
+  font-family: "Russo One", sans-serif;
+  margin-left: 20em;
+  margin-top: 7em;
+  width: 50%;
+  font-weight: bold;
 }
 
 .collapsible {
-  background-color: #777;
+  grid-column: span 2;
+  background-color: #001f61;
+  border: 2px solid white;
   color: white;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
   cursor: pointer;
-  padding: 18px;
-  width: 354px;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
+  border-radius: 1rem;
+  align-self: center;
+  width: 50vw;
+  margin-left: 400px;
 }
 
 .active,
@@ -120,9 +149,16 @@ p:hover {
 .content {
   padding: 0 18px;
   display: none;
-  width: 30%;
+  width: 100%;
   overflow: auto;
   background-color: #f1f1f1;
+  align-items: center;
+  align-content: flex-start;
+  text-align: center;
+}
+
+.threat {
+  color: black;
 }
 
 .navbar-brand {

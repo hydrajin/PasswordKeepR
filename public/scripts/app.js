@@ -39,7 +39,7 @@ $(document).ready(function() {
     const accountId = $(this).closest("tr").find(".account_id").html();
     $.post(url, { id: accountId, password: password })
       .then(() =>
-        alert("success"));
+        alert("Password has been edited!"));
   });
 
   $(document).on("click", ".password_delete", function(event) {
@@ -59,7 +59,7 @@ $(document).ready(function() {
     const accountId = $(this).closest("tr").find(".account_id").html();
     $.post(url, { id: accountId})
       .then(() =>
-        alert("success"));
+        alert("Password Deleted"));
     $(this).closest("tr").hide("input.password");
   });
 
@@ -83,7 +83,7 @@ $(document).ready(function() {
     const url = $("#url").val();
     const created_at = $("#created_at").val();
     if (!url || !category || !username || !created_at) {
-      alert("empty field");
+      alert("Empty Field!");
       return;
     }
 
@@ -97,10 +97,25 @@ $(document).ready(function() {
       },
       error: function(xhr, type, exception) {
         // if ajax fails display error alert
-        alert("it didn't work");
+        alert("Sorry, your request could not be completed!");
       }
     });
   });
+
+  //home screen language select
+  let coll = document.getElementsByClassName("collapsible");
+  let i;
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      let content = this.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  }
 
   $("#generate_password").click(function(event) {
 
