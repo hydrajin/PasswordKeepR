@@ -16,6 +16,22 @@ $(document).ready(function() {
     // fillAlertError("Copied to clipboard:");
   });
 
+
+  $(function() { // Dropdown toggle
+    $('.dropdown-toggle').click(function() {
+      $(this).next('.dropdown').slideToggle();
+    });
+
+    $(document).click(function(e) {
+      let target = e.target;
+      if (!$(target).is('.dropdown-toggle') && !$(target).parents().is('.dropdown-toggle'))
+      //{ $('.dropdown').hide(); }
+      {
+        $('.dropdown').slideUp();
+      }
+    });
+  });
+
   $(document).on("click", ".edit_password", function(event) {
     // event.preventDefault();
     const password = $(this).closest("tr").find("input.password").val();

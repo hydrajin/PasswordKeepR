@@ -1,6 +1,6 @@
 nav {
   font-family: "Russo One", sans-serif;
-  background-color: #ce5454;
+  background-color: #d32d27;
   justify-content: space-between;
   display: flex;
   height: 50px;
@@ -40,9 +40,58 @@ form {
 }
 
 .login {
-  padding-right: 6px;
-  font-size: 22px;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  text-decoration: none;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 1em;
 }
+
+//!--------------
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+/**** ****/
+div#nav {
+  position: relative;
+}
+div#nav a {
+  padding: 5px 15px 5px;
+}
+.dropdown-toggle {
+  padding: 0;
+  // background: #777;
+}
+/**** ****/
+ul.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  margin-top: 2px;
+  padding: 7px 20px 0 0;
+  background: #777;
+}
+ul.dropdown li {
+  list-style-type: none;
+}
+ul.dropdown li a {
+  text-decoration: none;
+  padding: 0em 1em;
+  display: block;
+}
+
+//!--------------
 
 p:hover {
   color: yellow;

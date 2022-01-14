@@ -1,5 +1,5 @@
 nav {
-  background-color: #ce5454;
+  background-color: #d32d27;
   justify-content: space-between;
   display: flex-start;
   height: 50px;
@@ -8,6 +8,43 @@ nav {
   top: 0;
   width: 100%;
   z-index: 1;
+  font-family: "Russo One", sans-serif;
+}
+
+a.navbar-brand {
+  font-family: "Russo One", sans-serif;
+  font-size: 40px;
+}
+
+.logout {
+  border-radius: 26.5px;
+  background-color: #001f61;
+  border: 1px solid #001f61;
+  box-shadow: 0 16px 22px -17px #03153b;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Russo One", sans-serif;
+  font-size: 20px;
+  line-height: 10px;
+  padding: 12px 20px;
+}
+
+a.navbar-link-a {
+  text-decoration: none;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a.navbar-link-b {
+  text-decoration: none;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .container {
@@ -55,6 +92,10 @@ thead {
   justify-items: center;
 }
 
+col.user {
+  padding-right: 10px;
+}
+
 div.slidecontainer {
   display: flex;
   flex-direction: row;
@@ -70,9 +111,107 @@ input.slider {
   font-size: 40px;
 }
 
+input.password {
+  width: 480px;
+  font-size: 27px;
+}
+
 .copy {
-  background-color: #777;
-  color: white;
-  padding: 4px 10px;
-  margin: 2.5px 0 0 0;
+  border-radius: 26.5px;
+  background-color: #001f61;
+  border: 1px solid #001f61;
+  box-shadow: 0 16px 22px -17px #03153b;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Russo One", sans-serif;
+  font-size: 20px;
+  line-height: 10px;
+  padding: 12px 20px;
+}
+
+.btn {
+  border-radius: 26.5px;
+  background-color: #001f61;
+  border: 1px solid #001f61;
+  box-shadow: 0 16px 22px -17px #03153b;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Russo One", sans-serif;
+  font-size: 20px;
+  line-height: 10px;
+  padding: 12px 20px;
+}
+
+.btn-outline-danger {
+  background-color: #ce5454;
+  border: 1px solid #ce5454;
+}
+
+.organization {
+  margin-left: 20px;
+  font-size: 50px;
+}
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 34px 0;
+  font-size: 1.4em;
+  font-family: sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+
+.copy-b {
+  padding-left: 250px;
+}
+
+.styled-table thead tr {
+  background-color: #0c2340;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th {
+  padding: 15px 90px 20px 15px;
+}
+
+.styled-table td {
+  padding: 10px 85px 20px 30px;
+}
+
+th.category {
+  padding: 15px 90px 20px 35px;
+}
+
+th.website {
+  padding: 15px 50px 20px 15px;
+}
+
+th.username {
+  padding: 15px 60px 20px 15px;
+}
+
+th.password {
+  padding: 15px 280px 20px 60px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #6c8883;
+}
+
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #3d4f4b;
+}
+
+th.del {
+  padding-right: 7em;
 }

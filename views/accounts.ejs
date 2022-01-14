@@ -11,27 +11,27 @@
     <%- include('partials/_header') %>
   </head>
   <body>
-    <i class="fas fa-lock"></i>
-    <h2><%= organization.name %> shared Accounts</h2>
-    <table class="table">
-      <thead>
+    <h2 class="organization"><%= organization.name %> Shared Accounts</h2>
+    <div>
+    <table class="styled-table">
+      <thead class="styled-table">
         <tr>
-          <th scope="col">Category</th>
-          <th scope="col">Website</th>
-          <th scope="col">Username</th>
-          <th scope="col">Password</th>
-          <th scope="col" style="padding-left: 20px">Copy</th>
+          <th scope="col" class="category">Category</th>
+          <th scope="col" class="website">Website</th>
+          <th scope="col" class ="username">Username</th>
+          <th scope="col" class="password">Password</th>
+          <th scope="col" style="padding-left: 20px"class="copy-b" >Copy </th>
           <th scope="col" style="padding-left: 20px">Edit</th>
-          <th scope="col" style="padding-left: 20px">Delete</th>
+          <th scope="col" class="del" style="padding-left: 20px">Delete</th>
         </tr>
       </thead>
       <tbody>
         <% for(let account of accounts) { %>
-        <tr class="rowData">
+        <tr class="rowData active-row">
           <td><%= account.category %></td>
           <td><%= account.url %></td>
-          <td><%= account.username %></td>
-          <td class="account_id"><%= account.id %></td>
+          <td class="col.user"><%= account.username %></td>
+          <!-- <td class="account_id"><%= account.id %></td> -->
           <!-- We need to select this value -->
           <td>
             <input
