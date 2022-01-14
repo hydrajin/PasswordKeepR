@@ -1,6 +1,6 @@
 nav {
   font-family: "Russo One", sans-serif;
-  background-color: #ce5454;
+  background-color: #258b7a;
   justify-content: space-between;
   display: flex;
   height: 50px;
@@ -12,10 +12,6 @@ nav {
   justify-content: flex-end;
   flex: 1;
   display: flex;
-}
-
-h1 {
-  margin-top: 2em;
 }
 
 a {

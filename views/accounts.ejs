@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
-      <%- include('partials/_header') %>
+    <%- include('partials/_header') %>
   </head>
   <body>
     <i class="fas fa-lock"></i>
@@ -33,22 +33,35 @@
           <td><%= account.username %></td>
           <td class="account_id"><%= account.id %></td>
           <!-- We need to select this value -->
-          <td><input type="text" class="password"value="<%= account.password %>"> </td>
           <td>
-            
-              <button class="copy">Copy</button>
-              
-            
+            <input
+              type="text"
+              class="password"
+              value="<%= account.password %>"
+            />
+          </td>
+          <td>
+            <button class="copy">Copy</button>
           </td>
           <td>
             <!-- <form  method="POST" action="/users/accounts/<%= account.id %>/edit">
               -->
-              <button  class="btn btn-outline-primary edit_password" data-url= "/users/accounts/<%= account.id %>/edit">Edit</button>
+            <button
+              class="btn btn-outline-primary edit_password"
+              data-url="/users/accounts/<%= account.id %>/edit"
+            >
+              Edit
+            </button>
             <!-- </form> -->
           </td>
-          <td> 
+          <td>
             <!-- <form method="POST" action="/users/accounts/<%= account.id %>/delete"> -->
-              <button class="btn btn-outline-danger password_delete" data-url= "/users/accounts/<%= account.id %>/delete">Delete</button>
+            <button
+              class="btn btn-outline-danger password_delete"
+              data-url="/users/accounts/<%= account.id %>/delete"
+            >
+              Delete
+            </button>
             <!-- </form> -->
           </td>
         </tr>
@@ -57,5 +70,3 @@
     </table>
   </body>
 </html>
-
-
