@@ -1,0 +1,75 @@
+nav {
+  background-color: #ce5454;
+  justify-content: space-between;
+  display: flex-start;
+  height: 50px;
+  color: #ffffff;
+  width: 100%;
+  z-index: 1;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navbar-brand {
+  text-decoration: none;
+  align-items: center;
+  color: #ffffff;
+  font-family: "Open sans", sans-serif;
+  font-size: 35px;
+}
+
+button.logout {
+  margin: 0 0.5em 0 0;
+}
+
+h2 {
+  flex-direction: space-between;
+}
+
+body {
+  justify-content: space-between;
+  margin-top: 10em;
+  align-items: center;
+  color: black;
+  background-color: #ffffff;
+}
+
+table {
+  display: flex;
+  flex-direction: column;
+  justify-items: space-between;
+}
+
+thead {
+  margin: 5 em;
+  flex-direction: center;
+  justify-content: space-between;
+  justify-items: center;
+}
+
+div.slidecontainer {
+  display: flex;
+  flex-direction: row;
+}
+
+input.slider {
+  margin: 0 0 0 1 em;
+}
+
+.g-buttons {
+  display: flex;
+  flex-direction: column;
+  font-size: 40px;
+}
+
+.copy {
+  background-color: #777;
+  color: white;
+  padding: 5px 10px;
+  margin: 5px 0 0 0;
+}
