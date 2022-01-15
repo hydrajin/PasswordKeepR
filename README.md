@@ -14,6 +14,8 @@ Lighthouse Labs Midterm Project by : ` Zakiya Alfughi`, `Suliman Fayyaz ` & ` Mo
    * user has a convenient copy to clipboard button so they don't have to select the password
    * sites can be categorized, to, social (instagram, youtube)), work related (bamboo, harvest), entertainment (snapchat, reddit), etc
 
+## Final Product Preview
+
 
 ## Getting Started
 
