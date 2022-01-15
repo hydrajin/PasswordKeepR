@@ -16,6 +16,10 @@ Lighthouse Labs Midterm Project by : ` Zakiya Alfughi`, `Suliman Fayyaz ` & ` Mo
 
 ## Final Product Preview
 
+!["Password PasswordKeepR HomePage"](https://github.com/mocodes0/PasswordKeepR/blob/main/docs/OfficiaalHomePage.png)
+
+!["Generate Password"](https://github.com/mocodes0/PasswordKeepR/blob/main/docs/GeneratePass.png)
+
 
 ## Getting Started
 
